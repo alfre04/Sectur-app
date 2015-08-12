@@ -12,6 +12,20 @@
     <link rel="stylesheet" href="css/kitchen-sink.css">
     <link rel="icon" href="img/icon.png">
     <link rel="apple-touch-icon" href="img/icon.png">
+    <script src="js/jquery-1.9.1.js"></script>
+    <script type="text/javascript">
+      function openUrl(url) {
+        alert("open url: " + url);
+        window.open(url, '_blank', 'location=yes');
+      }
+  
+      function onDeviceReady() {
+        alert('device ready!');
+      }
+      $(function() {
+          document.addEventListener("deviceready", onDeviceReady, true);
+      });
+    </script>
   </head>
   <body>
     <div class="statusbar-overlay"></div>
