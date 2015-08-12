@@ -17,14 +17,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script type="text/javascript">
     
-     function initialize() {
+    var gaPlugin;
+    
+    function initialize() {
         document.addEventListener("deviceready", onDeviceReady, true);
     }
     
     function openDeviceBrowser (externalLinkToOpen){ window.open(externalLinkToOpen, '_system', 'location=no');} 
-    
-    var gaPlugin;
-    
 
 function onDeviceReady() {
     gaPlugin = window.plugins.gaPlugin;
@@ -35,7 +34,7 @@ function onDeviceReady() {
 
 function permissionCallback (button) {
     if (button === 1)
-    gaPlugin.init(nativePluginResultHandler, nativePluginErrorHandler, "000000", 10);
+    gaPlugin.init(nativePluginResultHandler, nativePluginErrorHandler, "UA-00000000-0", 10);
 }
 
 function nativePluginResultHandler (result) {
