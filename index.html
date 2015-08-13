@@ -14,63 +14,44 @@
     <link rel="apple-touch-icon" href="img/icon.png">
     <script src="cordova.js"></script>
     <script src="phonegap.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script type="text/javascript">
+     <script type="text/javascript" charset="utf-8">       
+      function openDeviceBrowser (externalLinkToOpen){
+        window.open(externalLinkToOpen, '_system', 'location=no');
+      } 
     
-    var gaPlugin;
+      function init(){
+        document.addEventListener("deviceready", ready, true);     
+      }
     
-    function initialize() {
-        document.addEventListener("deviceready", onDeviceReady, true);
+      function ready() {
+        console.log("Thunderbirds are go!");
+      }
+    
+    function download() {
+        var remoteFile = "http://i3.kym-cdn.com/entries/icons/original/000/000/080/doubt.jpg";
+        var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/')+1);
+        
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+            fileSystem.root.getFile(localFileName, {create: true, exclusive: false}, function(fileEntry) {
+                var localPath = fileEntry.fullPath;
+                if (device.platform === "Android" && localPath.indexOf("file://") === 0) {
+                    localPath = localPath.substring(7);
+                }
+                var ft = new FileTransfer();
+                ft.download(remoteFile,
+                    localPath, function(entry) {
+                        var dwnldImg = document.getElementById("dwnldImg");
+                        dwnldImg.src = entry.fullPath;
+                        dwnldImg.style.visibility = "visible";
+                        dwnldImg.style.display = "block";
+                    }, fail);
+            }, fail);
+        }, fail);
     }
     
-    function openDeviceBrowser (externalLinkToOpen){ window.open(externalLinkToOpen, '_system', 'location=no');} 
-
-function onDeviceReady() {
-    gaPlugin = window.plugins.gaPlugin;
-    
-    // Note: A request for permission is REQUIRED by google. You probably want to do this just once, though, and remember the answer for subsequent runs.
-    navigator.notification.confirm('GA_PLUGIN would like your permission to collect usage data. No personal or user identifiable data will be collected.', permissionCallback, 'Attention', 'Allow,Deny');
-}
-
-function permissionCallback (button) {
-    if (button === 1)
-    gaPlugin.init(nativePluginResultHandler, nativePluginErrorHandler, "UA-00000000-0", 10);
-}
-
-function nativePluginResultHandler (result) {
-    //alert('nativePluginResultHandler - '+result);
-    console.log('nativePluginResultHandler: '+result);
-    
-}
-
-function nativePluginErrorHandler (error) {
-    //alert('nativePluginErrorHandler - '+error);
-    console.log('nativePluginErrorHandler: '+error);
-}
-
-function TrackButtonClicked() {
-    gaPlugin.trackEvent( nativePluginResultHandler, nativePluginErrorHandler, "Button", "Click", "event only", 1);
-}
-
-function VariableButtonClicked() {
-    // Set a dimension based on index and value. Make sure you have added a dimension in the GA dashboard to the
-    // default property for the passed in index, and your desired scope. GA allows up to 20 dimensions for a free account
-    gaPlugin.setVariable( nativePluginResultHandler, nativePluginErrorHandler, 1, "Purple");
-    
-    // dimensions are are passed to the next event sent to GA. go ahead and fire off an event with the label (key) of your choice
-    // In this example, the label for custom dimension 1 will show up in the dashboard as "favoriteColor". This is much more efficent
-    // than the old custom variable method introduced in V1, (plus you get 20 free dimensions vs 5 free custom variables)
-    gaPlugin.trackEvent( nativePluginResultHandler, nativePluginErrorHandler, "event with variable", "set variable", "favoriteColor", 1);
-}
-
-function PageButtonClicked() {
-    gaPlugin.trackPage( nativePluginResultHandler, nativePluginErrorHandler, "some.url.com");
-}
-
-function goingAway() {
-    gaPlugin.exit(nativePluginResultHandler, nativePluginErrorHandler);
-}
-
+    function fail(error) {
+        console.log(error.code);
+    }
     </script>
   </head>
   <body>
