@@ -5821,3 +5821,15 @@ html.pixel-ratio-3 .picker-calendar.picker-modal-inline .picker-calendar-week-da
 [disabled] [disabled] {
   opacity: 1;
 }
+
+.planifica-pesca a{
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.planifica-pesca a img{
+  display: block;
+  height: auto;
+  width: 100%;
+}
