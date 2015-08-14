@@ -13,7 +13,8 @@
         <div class="app">
             <h1>PhoneGap</h1>
             <div id="deviceready" class="blink">
-                <a href="http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf" download>Descarga</a>
+                <a href="http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf">Descarga</a>
+
             </div>
         </div>
         <script type="text/javascript" src="phonegap.js"></script>
@@ -48,7 +49,7 @@
                 
                 fileTransfer.download(
                     'http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf',
-                    path + 'theFile.pdf',
+                    path + 'prueba.pdf',
                     function(file) {
                         console.log('download complete: ' + file.toURI());
                         showLink(file.toURI());
