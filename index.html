@@ -20,6 +20,11 @@
     <script type="text/javascript" charset="utf-8">       
     document.addEventListener('deviceready', onDeviceReady, false);
     
+    /* Open */
+    function openDeviceBrowser (externalLinkToOpen){
+      window.open(externalLinkToOpen, '_system', 'location=no');
+    }
+    
     function onDeviceReady() {
          var ref = window.open('http://apache.org', '_blank', 'location=yes');
          ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
