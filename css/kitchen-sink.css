@@ -426,3 +426,19 @@ div.ks-demo-lazy {
   height: auto;
   width: 100%;
 }
+
+.section-uno,
+.section-dos,
+.section-tres,
+.section-cuatro{
+    display: block;
+    float: left;
+    margin-bottom: 35px;
+    width: 100%;
+}
+
+.section-uno a, .section-dos a, .section-tres a, .section-cuatro a {
+    display: block;
+    float: left;
+    width: 25%;
+}
