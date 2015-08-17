@@ -81,8 +81,7 @@
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
 	
-   <!--iOS-->
-   <icon src="res/icon/ios/icon-57.png" gap:platform="ios" width="57" height="57"/>
+  <icon src="res/icon/ios/icon-57.png" gap:platform="ios" width="57" height="57"/>
    <icon src="res/icon/ios/icon-57@2x.png" gap:platform="ios" width="114" height="114"/>
    <icon src="res/icon/ios/icon-72.png" gap:platform="ios" width="72" height="72"/>
    
@@ -107,7 +106,7 @@
 
     
    <!-- retina iPad support: PhoneGap 2.5.0+ only -->
-   <icon src="res/icon/ios/sectur.png" gap:platform="ios" width="144" height="144" />
+   <icon src="res/icon/ios/cgch.png" gap:platform="ios" width="144" height="144" />
    
    <gap:splash src="splash.png"/>
    
